@@ -1,0 +1,42 @@
+.landing {
+  position: relative;
+  background: url("./img/logo.png") no-repeat;
+  background-size: 500px 450px;
+  background-position: center;
+  height: 100vh;
+  background-color: #e6ecf0;
+}
+.dashboard {
+  position: relative;
+  background: url("./img/logo.png") no-repeat;
+  background-size: 500px 450px;
+  background-position: center;
+  height: 100vh;
+  background-color: #e6ecf0;
+}
+
+.card-form {
+  opacity: 0.9;
+}
+
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}
+
+a {
+  color: #ffffff;
+}
+
+.button_custom {
+  background-color: #e6ecf0;
+  color: #161925;
+}
+
+h1 {
+  color: #fdfffc;
+}
