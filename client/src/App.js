@@ -6,18 +6,20 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import "./App.css";
+import "./Netflix.css";
+
 import Navbar from "./components/layout/Navbar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Upload from "./components/auth/Upload";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
-import video from "./components/layout/video";
 import store from "./store";
 
 import PrivateRoute from "./components/common/PrivateRoute";
 
 import Dashboard from "./components/dashboard/Dashboard";
+import Explore from "./components/dashboard/Explore";
 import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -60,6 +62,8 @@ class App extends Component {
               <Switch>
                 <PrivateRoute exact path="/upload" component={Upload} />
               </Switch>
+
+              <Route exact path="/explore" component={Explore} />
             </div>
           </div>
         </Router>

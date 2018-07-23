@@ -1,12 +1,27 @@
 import axios from "axios";
-import { GET_ERRORS } from "./types";
+import {
+  GET_PROFILE,
+  PROFILE_LOADING,
+  CLEAR_CURRENT_PROFILE,
+  GET_ERRORS,
+  SET_CURRENT_USER,
+  GET_VIDEOS,
+  SET_VIDEO
+} from "./types";
 
 //Login - Get User Token
 export const uploadVideo = videoData => dispatch => {
+  console.log(videoData);
+
   axios
     .post("/api/uploadVideo/upload", videoData)
     .then(res => {
-      res.json({ res });
+      dispatch({
+        type: SET_VIDEO,
+        payload: videoData
+      });
+
+      //res.json({ msg: "Success" });
     })
     .catch(err =>
       dispatch({
@@ -16,6 +31,19 @@ export const uploadVideo = videoData => dispatch => {
     );
 };
 
-export const addKey = videoData => {
-  axios.post("/api/uploadVideo/addkey", videoData).then(res => {});
+export const getVideos = () => dispatch => {
+  axios
+    .get("/api/uploadVideo/getvideos")
+    .then(res => {
+      dispatch({
+        type: GET_VIDEOS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_VIDEOS,
+        payload: {}
+      });
+    });
 };

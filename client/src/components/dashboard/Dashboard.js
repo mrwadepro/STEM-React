@@ -37,6 +37,15 @@ class Dashboard extends Component {
         </Link>
       </div>
     );
+    const videosButton = (
+      <div>
+        <p className="lead text-muted">Welcome {user.name}</p>
+        <p>Click here to show supplied videos.</p>
+        <Link to="/" className="btn btn-lg btn-info">
+          View
+        </Link>
+      </div>
+    );
     let dashboardContent;
     if (profile === null || loading) {
       console.log("Loading");
@@ -76,24 +85,31 @@ class Dashboard extends Component {
     }
     return (
       <div className="dashboard">
+        <div className="row">
+          {" "}
+          <a
+            href=""
+            onClick={this.onLogoutClick.bind(this)}
+            className="nav-link"
+          >
+            <img
+              style={{ width: "25px", marginRight: "5px" }}
+              className="rounded-circle"
+              src={user.avatar}
+              alt={user.name}
+              title="You must have a gravatar connected to your email to display an image"
+            />
+            Logout
+          </a>
+        </div>
         <div className="row h-100">
           <div className="col-6 align-self-center text-center">
-            {dashboardContent}
+            {videosButton}
           </div>
           <div className="col-6 align-self-center text-center">
             {uploadButton}
           </div>
         </div>
-        <a href="" onClick={this.onLogoutClick.bind(this)} className="nav-link">
-          <img
-            style={{ width: "25px", marginRight: "5px" }}
-            className="rounded-circle"
-            src={user.avatar}
-            alt={user.name}
-            title="You must have a gravatar connected to your email to display an image"
-          />
-          Logout
-        </a>
       </div>
     );
   }

@@ -11,6 +11,10 @@ const UploadVideoSchema = new Schema({
     type: String,
     required: true
   },
+  thumbnail: {
+    type: String,
+    required: true
+  },
   key: {
     type: String,
     required: true

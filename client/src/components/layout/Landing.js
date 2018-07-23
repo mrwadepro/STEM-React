@@ -13,7 +13,7 @@ class Landing extends Component {
       <div className="landing">
         <div className="row h-100">
           <div className="col-6 align-self-center text-center">
-            <Link to="/register" className="btn btn-link">
+            <Link to="/explore" className="btn btn-link">
               <h1 className="text-center">Explore</h1>
             </Link>
           </div>

@@ -469,8 +469,10 @@ function defineRequest() {
     }.bind(this),
     onComplete: function(data) {
       var uploadResponse = JSON.parse(data);
-      console.log("Upload complete for video " + uploadResponse.id);
+      console.log(uploadResponse);
+
       window.videoID = uploadResponse.id;
+      window.thumbnail = uploadResponse.snippet.thumbnails.high.url;
     }.bind(this)
   });
 

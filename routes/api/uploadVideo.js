@@ -16,7 +16,17 @@ const User = require("../../models/User");
 // @route       GET api/users/test
 //@description  Tests users route
 //@access       Public
-
+router.get(
+  "/getvideos",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Video.find({ owner: req.user.organization })
+      .then(video => {
+        res.json({ video });
+      })
+      .catch(err => res.json(err));
+  }
+);
 // @route       GET api/uploadVideo/upload
 //@description  Upload Video
 //@access       Public
@@ -37,51 +47,13 @@ router.post(
       user: req.body.user,
       description: req.body.description,
       key: req.body.key,
+      thumbnail: req.body.thumbnail,
       owner: req.body.owner
     });
     newVideo
       .save()
       .then(newVideo => res.json({ newVideo }))
       .catch(err => res.json(err));
-    const user = req.body.user;
-    User.findOne({ user })
-
-      .then(user => {
-        console.log(user);
-
-        const newVideoKey = {
-          videokey: req.body.key
-        };
-        //Add to experience array
-        //we use unshift so it adds it at the beginning of the array.
-
-        user.videokey.unshift(newVideoKey);
-        user.save().then(() => {
-          console.log("key added");
-        });
-      })
-      .catch(err => console.log(err));
-  }
-);
-router.post(
-  "/addkey",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    console.log("IN ADD KEY");
-    const user = req.body.user;
-    User.findOne({ user })
-      .then(user => {
-        const newVideoKey = {
-          videokey: req.body.key
-        };
-        //Add to experience array
-        //we use unshift so it adds it at the beginning of the array.
-        user.videokey.unshift(newVideoKey);
-        user.save().then(() => {
-          res.json({ msg: "key added" });
-        });
-      })
-      .catch(err => res.json({ err }));
   }
 );
 

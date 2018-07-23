@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { loginUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
@@ -36,6 +37,7 @@ class Login extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
+    console.log("SUBMITTED");
 
     const userData = {
       email: this.state.email,
@@ -52,7 +54,7 @@ class Login extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Log In</h1>
               <p className="lead text-center">
-                Sign in to your DevConnector account
+                Sign in to your STEMuli account
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
@@ -73,6 +75,10 @@ class Login extends Component {
                 />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
+              <br />
+              <Link to="/register" className="">
+                <h5 className="text-center">New User?</h5>
+              </Link>
             </div>
           </div>
         </div>

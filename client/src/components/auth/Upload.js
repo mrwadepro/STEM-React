@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import store from "../../store";
 //Components for textFields
-import { uploadVideo, addKey } from "../../actions/uploadActions";
+import { uploadVideo } from "../../actions/uploadActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaField from "../common/TextAreaFieldGroup";
 import { handleClientLoad } from "../../YoutubeAPI/upload";
@@ -16,6 +16,7 @@ class Upload extends Component {
       description: "",
       key: "",
       owner: "",
+      thumbnail: "",
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
@@ -36,18 +37,13 @@ class Upload extends Component {
     const videoData = {
       description: this.state.description,
       owner: store.getState().auth.user.organization,
-      key: window.videoID
+      key: window.videoID,
+      thumbnail: window.thumbnail
     };
     this.props.uploadVideo(videoData);
-    // this.props.addKey(videoData);
   }
   handleClick(e) {
     e.preventDefault();
-    handleAuthClick(e);
-  }
-  handleClick(e) {
-    e.preventDefault();
-    console.log("CLICK");
     handleAuthClick(e);
   }
   render() {
@@ -113,5 +109,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { uploadVideo, addKey }
+  { uploadVideo }
 )(Upload);
