@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "classnames": "^2.2.5",
     "jwt-decode": "^2.2.0",
+    "method-override": "^3.0.0",
     "moment": "^2.22.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
