@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "/Users/wadeaston/Desktop/STEM_React/client/public ",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
