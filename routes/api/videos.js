@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 //Load input validation
 const validateUpload = require("../../validation/upload");
 //Load user model
-const Video = require("../../models/UploadVideo");
+const Video = require("../../models/Video");
 const User = require("../../models/User");
 
 // @route       GET api/users/test
@@ -21,8 +21,8 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Video.find({ owner: req.user.organization })
-      .then(video => {
-        res.json({ video });
+      .then(videos => {
+        res.json(videos);
       })
       .catch(err => res.json(err));
   }
@@ -52,8 +52,35 @@ router.post(
     });
     newVideo
       .save()
-      .then(newVideo => res.json({ newVideo }))
+      .then(video => res.json(video))
       .catch(err => res.json(err));
+  }
+);
+
+// @route   GET api/videos/video/:video_id
+// @desc    Getvideo by video ID
+// @access  Private
+
+router.get(
+  "/video/:video_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const errors = {};
+    console.log("WTF!");
+
+    console.log(req.params.video_id);
+    Video.find({ video: req.params.video_id })
+      .then(video => {
+        console.log({ video });
+      })
+      .catch(err => console.log(err));
+    /*Video.findOne({ video: req.params.video_id })
+      .then(video => {
+        res.json(video);
+      })
+      .catch(err => {
+        res.status(404).json({ video: "Video doesn't exist" });
+      });*/
   }
 );
 

@@ -9,7 +9,6 @@ import {
 } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 import ProfileActions from "./ProfileActions";
-import Experience from "./Experience";
 import { logoutUser } from "../../actions/authActions";
 
 class Dashboard extends Component {
@@ -41,7 +40,7 @@ class Dashboard extends Component {
       <div>
         <p className="lead text-muted">Welcome {user.name}</p>
         <p>Click here to show supplied videos.</p>
-        <Link to="/" className="btn btn-lg btn-info">
+        <Link to="/explore" className="btn btn-lg btn-info">
           View
         </Link>
       </div>
@@ -60,7 +59,6 @@ class Dashboard extends Component {
               Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
-            <Experience experience={profile.experience} />
             <div style={{ marginBottom: "60px" }} />
             <button
               onClick={this.onDeleteClick.bind(this)}

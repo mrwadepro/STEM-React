@@ -3,35 +3,44 @@
   background: url("./img/logo.png") no-repeat;
   background-size: 500px 450px;
   background-position: center;
-  height: 100vh; }
+  height: 100vh;
+}
 
 .dashboard {
   position: relative;
   background: url("./img/logo.png") no-repeat;
   background-size: 500px 450px;
   background-position: center;
-  height: 100vh; }
+  height: 100vh;
+}
 
 body {
-  background-color: #e6ecf0;
-  background-size: 100%, 100%; }
+  background-color: #022b49;
+  background-size: 100%, 100%;
+}
 
 .card-form {
-  opacity: 0.9; }
+  opacity: 0.9;
+}
 
 .latest-profiles-img {
   width: 40px;
-  height: 40px; }
+  height: 40px;
+}
 
 .form-control::placeholder {
-  color: #bbb !important; }
+  color: #bbb !important;
+}
 
 a {
-  color: #ffffff; }
+  color: #ffffff;
+}
 
 .button_custom {
   background-color: #e6ecf0;
-  color: #161925; }
+  color: #161925;
+}
 
 h1 {
-  color: #fdfffc; }
+  color: #fdfffc;
+}

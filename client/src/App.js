@@ -20,9 +20,8 @@ import PrivateRoute from "./components/common/PrivateRoute";
 
 import Dashboard from "./components/dashboard/Dashboard";
 import Explore from "./components/dashboard/Explore";
-import CreateProfile from "./components/create-profile/CreateProfile";
-import EditProfile from "./components/edit-profile/EditProfile";
 import { clearCurrentProfile } from "./actions/profileActions";
+import EditVideo from "./components/edit-video/EditVideo";
 
 //Check for token
 if (localStorage.jwtToken) {
@@ -61,6 +60,13 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/upload" component={Upload} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/editvideo/:id"
+                  component={EditVideo}
+                />
               </Switch>
 
               <Route exact path="/explore" component={Explore} />

@@ -2,8 +2,9 @@
 /***** START BOILERPLATE CODE: Load client library, authorize user. *****/
 import $ from "jquery";
 // Global variables for GoogleAuth object, auth status.
-var GoogleAuth;
+var GoogleAuth = null;
 var selectedFile;
+
 /**
  * Load the API's client and auth2 modules.
  * Call the initClient function after the modules load.

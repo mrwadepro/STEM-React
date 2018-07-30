@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //Create Schema
-const UploadVideoSchema = new Schema({
-  user: {
+const VideoSchema = new Schema({
+  video: {
     type: Schema.Types.ObjectId,
     ref: "users"
   },
@@ -47,4 +47,4 @@ const UploadVideoSchema = new Schema({
   }
 });
 
-module.exports = UploadVideo = mongoose.model("uploadvideo", UploadVideoSchema);
+module.exports = Video = mongoose.model("videos", VideoSchema);

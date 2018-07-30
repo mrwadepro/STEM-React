@@ -2,13 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const path = require("path");
 
 const methodOverride = require("method-override");
 
 //When we route to these files we will load them in below
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
-const uploadVideo = require("./routes/api/uploadVideo");
+const videos = require("./routes/api/videos");
 
 const app = express();
 //Body parser middleware
@@ -36,7 +37,16 @@ require("./config/passport")(passport);
 //Use Routes here
 app.use("/api/users", users);
 app.use("/api/profile", profile);
-app.use("/api/uploadVideo", uploadVideo);
+app.use("/api/videos", videos);
+
+// Server static assets if in production
+if (process.env.NODE_ENV === "production") {
+  //set static foler
+  app.user(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 
